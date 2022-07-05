@@ -92,12 +92,12 @@ jobs:
           if_true: ${{ github.event.inputs.name }}
           if_false: ${{ github.sha }}
 
-      - name: Wait for CI workflow
+      - name: Wait for CI workflow (Multi-Arch image)
         uses: fountainhead/action-wait-for-check@v1.0.0
         id: wait-for-CI
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: "build-images"
+          checkName: "create-multiarch-image"
           ref:  ${{ steps.condval.outputs.value }}
           timeoutSeconds: 600
 
